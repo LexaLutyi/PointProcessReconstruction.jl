@@ -13,9 +13,12 @@ function get_colored_params(x0, y0, wp_x, wp_y=wp_x, wp_xy=wp_y; s::Int=2)
     k_y = K_all(y0, wp_y, vs_y)
     k_y_cross = K_all(x0, y0, wp_xy, vs_x_cross, vs_y_cross)
 
-    w_x = 1 ./ abs.(k_x)
-    w_y = 1 ./ abs.(k_y)
-    w_y_cross = 1 ./ abs.(k_y_cross)
+    # w_x = 1 ./ abs.(k_x)
+    # w_y = 1 ./ abs.(k_y)
+    # w_y_cross = 1 ./ abs.(k_y_cross)
+    w_x = 1 ./ W_all(x0, wp_x, vs_x)
+    w_y = 1 ./ W_all(y0, wp_y, vs_y)
+    w_y_cross = 1 ./ W_all(x0, y0, wp_xy, vs_x_cross, vs_y_cross)
 
     if maximum([w_x; w_y; w_y_cross]) > 10_000
         w_x = min.(w_x, 10_000)

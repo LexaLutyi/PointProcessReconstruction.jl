@@ -1,17 +1,14 @@
 function reconstruction(u0, f, p; alg, problem_kwargs, solver_kwargs, isshow=true)
     prob = GalacticOptim.OptimizationProblem(f, u0, p; problem_kwargs...)
     trace = Trace(prob; isshow)
-    solve(prob, alg; cb=trace, solver_kwargs...)
-
+    sol = solve(prob, alg; cb=trace, solver_kwargs...)
+    trace(sol.u, f(sol.u, p))
     trace
 end
 
 
-function scaled_colored_reconstruction(fy, x0, y0, ux, s::Int = 2; alg=LBFGS(), problem_kwargs, solver_kwargs, isshow=true)
+function scaled_colored_reconstruction(fy, x0, y0, ux, s::Int = 2; alg=LBFGS(), problem_kwargs, solver_kwargs, isshow=true, Ns = [128, 128, 128, 128], σs = [e / 2^n for n in 4:7])
     e = one(eltype(y0))
-
-    Ns = [128, 128, 128, 128]
-    σs = [e / 2^n for n in 4:7]
 
     uy = s * rand(eltype(y0), s * s * length(y0))
     traces_y = []
