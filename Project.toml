@@ -12,6 +12,7 @@ PointsReconstruction = "3071fa7f-0feb-471d-b98a-770ab30a00e3"
 StatsBase = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"
 
 [compat]
+BlackBoxOptim = "0.6"
 julia = "1"
 
 [extras]
