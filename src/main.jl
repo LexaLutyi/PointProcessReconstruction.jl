@@ -7,7 +7,7 @@ function reconstruction(u0, f, p; alg, problem_kwargs, solver_kwargs, isshow=tru
 end
 
 
-function scaled_colored_reconstruction(fy, x0, y0, ux, s::Int = 2; alg=LBFGS(), problem_kwargs, solver_kwargs, isshow=true, Ns = [128, 128, 128, 128], σs = [e / 2^n for n in 4:7])
+function scaled_colored_reconstruction(fy, x0, y0, ux, s::Int = 2; alg=LBFGS(), problem_kwargs, solver_kwargs, isshow=true, Ns = [128, 128, 128, 128], σs = [one(eltype(y0)) / 2^n for n in 4:7])
     e = one(eltype(y0))
 
     uy = s * rand(eltype(y0), s * s * length(y0))
