@@ -8,7 +8,7 @@ BlackBoxOptim = "a134a8b2-14d6-55f6-9291-3336d3ab0209"
 Flux = "587475ba-b771-5e3f-ad9e-33799f191a9c"
 GalacticOptim = "a75be94c-b780-496d-a8a9-0878b188d577"
 Optim = "429524aa-4258-5aef-a3af-852621145aeb"
-PointsReconstruction = "3071fa7f-0feb-471d-b98a-770ab30a00e3"
+PointProcessWavelet = "e9230801-0f6f-4f2b-aa46-e53e603b9a8a"
 StatsBase = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"
 
 [compat]

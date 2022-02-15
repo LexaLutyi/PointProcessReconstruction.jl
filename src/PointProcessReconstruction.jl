@@ -1,13 +1,11 @@
 module PointProcessReconstruction
 
 
-using PointsReconstruction
-using PointsReconstruction: v_λ_k_all, K_all, W_all
+using PointProcessWavelet
 using StatsBase
 using Optim
 using Flux
 using GalacticOptim
-# using BlackBoxOptim
 
 include("trace.jl")
 include("get_params.jl")

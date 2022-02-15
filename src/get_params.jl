@@ -45,5 +45,3 @@ function get_colored_params(x0, y0, wp_x, wp_y=wp_x, wp_xy=wp_y; s::Int=2)
         w_y_cross
     )
 end
-
-
