@@ -7,6 +7,30 @@ function reconstruction(u0, f, p; alg, problem_kwargs, solver_kwargs, isshow=tru
 end
 
 
+function pp_reconstruction(fx, x0; ; alg=LBFGS(), problem_kwargs, solver_kwargs, isshow=true, Ns, σs)
+    e = one(eltype(x0))
+
+    ux = rand(eltype(x0), length(x0))
+    traces_x = []
+    for (N, σ) in zip(Ns, σs)
+        J, L, K = 3, 8, 2
+        
+        wp_x = WaveletParams(e / 2, N, J, L, K, σ)
+
+        p = get_params(x0, wp_x)
+
+        t_x = reconstruction(ux, fx, p; alg, problem_kwargs, solver_kwargs, isshow)
+
+        ux .= t_x[end]
+        push!(traces_x, t_x)
+
+        @info "x reconstruction" N σ improvement=t_x.way_l[end] / t_x.way_l[1]
+    end
+
+    traces_x
+end
+
+
 function scaled_colored_reconstruction(fy, x0, y0, ux, s::Int = 2; alg=LBFGS(), problem_kwargs, solver_kwargs, isshow=true, Ns = [128, 128, 128, 128], σs = [one(eltype(y0)) / 2^n for n in 4:7])
     e = one(eltype(y0))
 

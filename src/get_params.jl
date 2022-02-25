@@ -3,6 +3,26 @@ function scale(wp::WaveletParams, s::Int)
 end
 
 
+function get_params(x0, wp_x)
+    vs_x = v_λ_k_all(x0, wp_x)
+    k_x = K_all(x0, wp_x, vs_x)
+    w_x = 1 ./ W_all(x0, wp_x, vs_x)
+
+    if maximum(w_x) > 10_000
+        w_x = min.(w_x, 10_000)
+        @warn "weights are too big"
+    end
+
+    (;
+        x0,
+        wp_x,
+        vs_x,
+        k_x,
+        w_x,
+    )
+end
+
+
 function get_colored_params(x0, y0, wp_x, wp_y=wp_x, wp_xy=wp_y; s::Int=2)
     vs_x = v_λ_k_all(x0, wp_x)
     vs_y = v_λ_k_all(y0, wp_y)
