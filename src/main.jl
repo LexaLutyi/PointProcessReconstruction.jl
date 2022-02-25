@@ -7,7 +7,7 @@ function reconstruction(u0, f, p; alg, problem_kwargs, solver_kwargs, isshow=tru
 end
 
 
-function pp_reconstruction(fx, x0; ; alg=LBFGS(), problem_kwargs, solver_kwargs, isshow=true, Ns, σs)
+function pp_reconstruction(fx, x0; alg=LBFGS(), problem_kwargs, solver_kwargs, isshow=true, Ns, σs)
     e = one(eltype(x0))
 
     ux = rand(eltype(x0), length(x0))

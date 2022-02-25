@@ -24,5 +24,7 @@ using Flux
 
     ux = rand(2, 1)
 
-    scaled_colored_reconstruction(fy, x0, y0, ux, s; alg, problem_kwargs, solver_kwargs, isshow)
+    Ns = [32, 32]
+    σs = [1 / 16, 1 / 32]
+    scaled_colored_reconstruction(fy, x0, y0, ux, s; alg, problem_kwargs, solver_kwargs, isshow, Ns, σs)
 end
