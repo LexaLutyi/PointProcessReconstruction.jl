@@ -12,6 +12,7 @@ PointProcessWavelet = "e9230801-0f6f-4f2b-aa46-e53e603b9a8a"
 StatsBase = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"
 
 [compat]
+GalacticOptim = "3"
 julia = "1"
 
 [extras]
