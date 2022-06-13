@@ -24,8 +24,10 @@ end
 
 
 function (trace::Trace)(x, l)
-    update_trace!(trace, x, l)
-    trace.isshow && println(trace)
+    issave = update_trace!(trace, x, l)
+    if trace.isshow && (trace.iteration % trace.save_every == 0)
+        println(trace)
+    end
     false
 end
 
