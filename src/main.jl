@@ -1,7 +1,7 @@
 function reconstruction(u0, f, p; alg, problem_kwargs, solver_kwargs, isshow=true)
-    prob = GalacticOptim.OptimizationProblem(f, u0, p; problem_kwargs...)
+    prob = Optimization.OptimizationProblem(f, u0, p; problem_kwargs...)
     trace = Trace(prob; isshow)
-    sol = solve(prob, alg; cb=trace, solver_kwargs...)
+    sol = solve(prob, alg; callback=trace, solver_kwargs...)
     trace(sol.u, f(sol.u, p))
     trace
 end

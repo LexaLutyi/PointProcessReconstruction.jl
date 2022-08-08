@@ -1,7 +1,7 @@
 using PointProcessReconstruction
 using Test
-using Optim
-using GalacticOptim
+using OptimizationOptimJL
+using Optimization
 using Flux
 
 @testset "PointProcessReconstruction.jl" begin
@@ -11,8 +11,8 @@ using Flux
     x0 = rand(2, 1)
     y0 = 0.1 * randn(2, 10)
 
-    # loss_x_OF = OptimizationFunction((x, p) -> loss_x(x, p), GalacticOptim.AutoZygote())
-    fy = OptimizationFunction((x, p) -> loss_y(x, p.p) + loss_y_cross(x, p.ux, p.p), GalacticOptim.AutoZygote())
+    # loss_x_OF = OptimizationFunction((x, p) -> loss_x(x, p), Optimization.AutoZygote())
+    fy = OptimizationFunction((x, p) -> loss_y(x, p.p) + loss_y_cross(x, p.ux, p.p), Optimization.AutoZygote())
     
     maxiters = 10
     alg = LBFGS()

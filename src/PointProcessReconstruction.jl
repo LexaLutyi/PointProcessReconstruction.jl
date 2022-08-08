@@ -3,9 +3,9 @@ module PointProcessReconstruction
 
 using PointProcessWavelet
 using StatsBase
-using Optim
+using OptimizationOptimJL
 using Flux
-using GalacticOptim
+using Optimization
 
 include("trace.jl")
 include("get_params.jl")
